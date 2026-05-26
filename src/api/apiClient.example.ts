@@ -20,9 +20,9 @@
 
 import { AUTOMATION_BASE_URL } from '../lib/config.example';
 
-// `providerClient` stands in for the provider SDK (e.g. a Postgres-backed
-// BaaS client). Reads use it directly; RLS does the user isolation.
-import { providerClient } from '../lib/providerClient.example';
+// Reads use the Supabase client directly; RLS does the user isolation.
+// Writes go to the n8n automation backend (see AUTOMATION_BASE_URL).
+import { supabase } from '../lib/supabase.example';
 
 /** Per-call timeout. Long-running automation (PDF generation, OCR) needs a
  *  generous ceiling; plain CRUD uses a shorter one. */
@@ -76,9 +76,9 @@ async function postAction(
 }
 
 export const documentApi = {
-  // ---- READ: provider SDK directly, RLS enforces user isolation --------
+  // ---- READ: Supabase directly, RLS enforces user isolation ------------
   list: async (): Promise<unknown[]> => {
-    const { data, error } = await providerClient
+    const { data, error } = await supabase
       .from('documents')
       .select('*')
       .order('created_at', { ascending: false });

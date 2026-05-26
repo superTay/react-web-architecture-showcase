@@ -10,5 +10,6 @@
     "skipLibCheck": true,
     "types": ["vitest/globals", "vite/client"]
   },
-  "include": ["src"]
+  "//": "typecheck covers the self-contained, runnable core (fiscal + normalization + tests). The *.example.* files are illustrative extracts, read for the pattern — not compiled here.",
+  "include": ["src/utils", "src/__tests__"]
 }

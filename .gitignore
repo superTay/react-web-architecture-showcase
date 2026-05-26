@@ -8,5 +8,5 @@ coverage/
 .env
 .env.local
 src/lib/config.ts
-src/lib/providerClient.ts
+src/lib/supabase.ts
 src/api/apiClient.ts
