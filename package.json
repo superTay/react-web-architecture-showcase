@@ -1,0 +1,16 @@
+{
+  "name": "react-web-architecture-showcase",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Curated, sanitized extract of engineering patterns from a private production React/TypeScript SaaS.",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "~5.8.2",
+    "vitest": "^4.0.18"
+  }
+}

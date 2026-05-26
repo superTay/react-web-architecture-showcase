@@ -1,0 +1,12 @@
+node_modules/
+dist/
+coverage/
+.DS_Store
+*.log
+
+# Never commit real config — only the *.example.* templates are tracked.
+.env
+.env.local
+src/lib/config.ts
+src/lib/providerClient.ts
+src/api/apiClient.ts
