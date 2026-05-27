@@ -1,11 +1,38 @@
+<!--
+================================================================
+README del repo github.com/superTay/react-web-architecture-showcase
+================================================================
+
+Para usarlo:
+1. Sube el archivo logo-web.png al repo en la ruta `assets/logo-web.png`.
+2. En GitHub, edita el README del repo, borra todo el contenido actual
+   y pega lo de abajo (desde la línea <div align="center"> hasta el final).
+3. Commit a main.
+
+Cambios respecto a la versión anterior:
+- Logo: assets/logo.svg → assets/logo-web.png (160px, clicable hacia la app)
+- Botón CTA "Open live app" justo debajo del título
+- Link al portfolio interactivo al final (cierra el loop)
+- Todo lo demás (arquitectura, mermaid, fiscal math, trade-offs) intacto
+================================================================
+-->
+
 <div align="center">
 
-<img src="assets/logo.svg" alt="KonquerAI" width="120" />
+<a href="https://app.konquerai.com">
+  <img src="assets/logo-web.png" alt="KonquerAI Web Dashboard" width="160" />
+</a>
 
 # KonquerAI — Web Dashboard
 
 **The React + TypeScript front end of a production invoicing & quoting SaaS for self-employed tradespeople in Spain.**
+
 Quotes, issued & received invoices, clients, profitability and Spanish tax math (VAT / IRPF) — in one zero-friction dashboard.
+
+<p>
+  <a href="https://app.konquerai.com"><img src="https://img.shields.io/badge/Open%20live%20app-app.konquerai.com-3FCF8E?style=for-the-badge&logo=vercel&logoColor=white" alt="Open live app"></a>
+  <a href="https://christian-marzal-portfolio.vercel.app/"><img src="https://img.shields.io/badge/Author's%20portfolio-christian--marzal-1a365d?style=for-the-badge&logoColor=white" alt="Author's portfolio"></a>
+</p>
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white)
@@ -76,17 +103,14 @@ flowchart LR
         RQ["React Query cache"]
         API["api/ clients"]
     end
-
     subgraph Supabase["Supabase"]
         AUTH["Auth (JWT)"]
         DB[("Postgres + RLS")]
         RT["Realtime"]
     end
-
     subgraph N8N["n8n automation backend"]
         WF["17 workflows:\nPDF · OCR · AI · email ingest"]
     end
-
     UI --> RQ --> API
     API -- "READS (JWT + RLS)" --> DB
     API -- "WRITES (internal session_key)" --> WF
@@ -107,6 +131,7 @@ sequenceDiagram
     U->>SPA: open invoices list
     SPA->>SB: SELECT (JWT) — RLS returns only my rows
     SB-->>SPA: data
+
     U->>SPA: create invoice
     SPA->>N8N: POST (session_key, not the JWT)
     N8N->>SB: validate token + write
@@ -230,3 +255,9 @@ This repo is intentionally not a runnable application.
 
 Source-available for **portfolio and evaluation only** — not open source.
 See [LICENSE](LICENSE). © 2026 Christian Marzal Della Rovere. All rights reserved.
+
+---
+
+<p align="center">
+  <sub>Built solo · <a href="https://app.konquerai.com">live app</a> · <a href="https://christian-marzal-portfolio.vercel.app/">author's portfolio</a> · <a href="https://github.com/superTay">@superTay</a></sub>
+</p>
